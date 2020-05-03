@@ -1,15 +1,9 @@
 import requests
 
-
-# https://avsip.ad.bl.uk/api/SIP/SubmissionCallback/ark%5E%7B81055%7Bvdc_100094409157!0x000002/2020-04-09T09%5E11%5E49Z
-
-
-
 class ApiRequests(object):
 
     SIP_TOOL_ADDR = "https://avsip.ad.bl.uk/"
     SIP_API = "api/SIP/"
-
 
     # def __init__(self):
     #     self.sip_tool_addr = SIP_TOOL_ADDR
@@ -19,7 +13,8 @@ class ApiRequests(object):
         r = requests.get(f"{self.SIP_TOOL_ADDR}{self.SIP_API}{SIP_ID}", verify=False)
         if r.status_code == 404:
             return None
-        return r.json()
+        else:
+            return r.json()
 
     def post_callback(self, callback_URI, ark, message=None):
         self.body = {"outcome":"Failure"}
@@ -49,6 +44,6 @@ class ApiRequests(object):
 
 my_app = ApiRequests()
 psip_json= my_app.get_JSON(40513)
-x = my_app.post_callback(psip_json['Submissions'][0]['CallbackUri'], psip_json['Submissions'][0]['ExternalIdentifier'], "Forced timeout failure by CWEAVER due to no callback received.")
-# my_app.post_callback("blahblah", "Ronsark")
-print(x)
+# x = my_app.post_callback(psip_json['Submissions'][0]['CallbackUri'], psip_json['Submissions'][0]['ExternalIdentifier'], "Forced timeout failure by CWEAVER due to no callback received.")
+# # my_app.post_callback("blahblah", "Ronsark")
+# print(x)
