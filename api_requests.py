@@ -9,8 +9,9 @@ class ApiRequests(object):
     #     self.sip_tool_addr = SIP_TOOL_ADDR
     #     self.sip_tool_api = SIP_API
 
-    def get_JSON(self, SIP_ID):
-        r = requests.get(f"{self.SIP_TOOL_ADDR}{self.SIP_API}{SIP_ID}", verify=False)
+    @staticmethod
+    def get_JSON(SIP_ID):
+        r = requests.get(f"{ApiRequests.SIP_TOOL_ADDR}{ApiRequests.SIP_API}{SIP_ID}", verify=False)
         if r.status_code == 404:
             return None
         else:
@@ -42,8 +43,8 @@ class ApiRequests(object):
         return any(map(lambda x: x == "0", self.response.text))
         
 
-my_app = ApiRequests()
-psip_json= my_app.get_JSON(40513)
+# my_app = ApiRequests()
+# psip_json= my_app.get_JSON(40513)
 # x = my_app.post_callback(psip_json['Submissions'][0]['CallbackUri'], psip_json['Submissions'][0]['ExternalIdentifier'], "Forced timeout failure by CWEAVER due to no callback received.")
 # # my_app.post_callback("blahblah", "Ronsark")
 # print(x)

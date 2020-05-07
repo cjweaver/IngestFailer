@@ -1,24 +1,23 @@
 import json
 
-class sipJSON(object):
+class json_methods(object):
     
     def __init__(self, pSIP_JSON):
         self.sami_call_number = pSIP_JSON['SamiCallNumber']
         self.submissions_node = pSIP_JSON['Submissions']
-        # What happens if there is no Null result
-        #  i.e the SIP is fine. Need a try/Except clause
-        for node in self.submissions_node:
-            if not node['CallbackRawResult']:
-                self.stuck_submission = node
+        self.SubmissionInProgress = pSIP_JSON['SubmissionInProgress']
 	
     def get_submissions_node(self):
         return self.submissions_node
 
     def get_stuck_submission(self):
+        for node in self.submissions_node:
+            if not node['CallbackRawResult']:
+                self.stuck_submission = node
         return self.stuck_submission
 
-    # def get_CallBackResult(self):
-    #     pass
+    def get_CallBackMessage(self):
+        return self.stuck_submission['CallbackMessage']
 
     def get_ExternalID(self):
         self.ExternalIdentifier = self.stuck_submission['ExternalIdentifier']

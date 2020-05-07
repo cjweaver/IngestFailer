@@ -10,8 +10,14 @@
 #
 # christopher.weaver@bl.uk 21/04/2020
 
-import api_requests
-import sip_json
+from api_requests import ApiRequests
+from json_methods import json_methods
+
+
+
+
+# Is the SIP stuck or has it actually failed with callback error message?
+
 
 
 
@@ -53,33 +59,23 @@ import sip_json
 #          pass
 
 
-class SIP(sip_json.sipJSON):
+class SIP(object):
 
     def __init__(self, SIP_ID):
         self.sip_id = SIP_ID
-        self.ApiRequests = api_requests.ApiRequests()
-        self.sip_json = self.ApiRequests.get_JSON(self.sip_id)
-        super().__init__(self.SIP_JSON)
-        # self.sipJSON = sip_json.sipJSON(self.SIP_JSON)
-        # self.sipJSON = self.sipJSON(self.SIP_JSON)
+        # self.ApiRequests = ApiRequests()
+        self.sip_json = ApiRequests.get_JSON(self.sip_id)
+        self.json_methods = json_methods(self.sip_json)
+        self.SubmissionInProgress = self.json_methods.SubmissionInProgress
 
-    # def get_first_submission_node(self):
-    #     # Use method from SIP_JSON object
+
     
-
-    # def get_CallBackResult(self):
-    #     pass
-
-    # def get_ExternalID(self):
-	# 	self.ExternalIdentifier = self.SIP_JSON['Submissions'][0]['ExternalIdentifier']
-
-    # def get_CallBackURI(self):
-    #     pass
 
 class User_details(object):
 
     # get user details
     pass
 
-my_SIP = SIP(40513)
-print()
+# my_SIP = SIP(486476)
+# print(my_SIP.SubmissionInProgress)
+# print()
