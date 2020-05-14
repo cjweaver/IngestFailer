@@ -3,15 +3,17 @@ import json
 class json_methods(object):
     
     def __init__(self, pSIP_JSON):
-        self.submissions_node = pSIP_JSON['Submissions']
+        self.submissions = pSIP_JSON['Submissions']
         self.StepStates = pSIP_JSON['StepStates']
         self.SubmissionInProgress = pSIP_JSON['SubmissionInProgress']
-        for node in self.submissions_node:
+        for node in self.submissions:
             if not node['CallbackRawResult']:
                 self.stuck_submission = node
+            else:
+                self.stuck_submission = self.submissions[0]
 	
     def get_submissions_node(self):
-        return self.submissions_node
+        return self.submissions
 
     def get_stuck_submission(self):
         return self.stuck_submission
@@ -34,8 +36,9 @@ class json_methods(object):
     def get_review_stepstate_id(self):
         for step in self.StepStates:
             if step['StepTitle'] == "Review":
-              self.review_stepstate_id = step["StepStateId"]
+                self.review_stepstate_id = step["StepStateId"]
                 return self.review_stepstate_id
+
 
             
 
