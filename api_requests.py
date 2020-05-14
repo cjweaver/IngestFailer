@@ -34,6 +34,11 @@ class ApiRequests(object):
         else:
             self.response = None
 
+    # def submit_sip(self, sip_id, review_stepstate_id, user_id, submit=True):
+    #     r = requests.get(f"{ApiRequests.SIP_TOOL_ADDR}{ApiRequests.SIP_API}{SIP_ID}/Generate/{sip_id}/{stepstate_id}/{submit}/{user_id}", verify=False)
+    #     GET api/SIP/Generate/{sip_id}/{stepstate_id}/{submit}/{user_id} should be "true" (even though it's actually ignored, any pSIP id sent will be submitted).
+
+
     def test_callback(self):
         
         """Checks the text of the response for the digit 0 

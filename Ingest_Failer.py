@@ -63,10 +63,13 @@ class SIP(object):
 
     def __init__(self, SIP_ID):
         self.sip_id = SIP_ID
-        # self.ApiRequests = ApiRequests()
         self.sip_json = ApiRequests.get_JSON(self.sip_id)
         self.json_methods = json_methods(self.sip_json)
         self.SubmissionInProgress = self.json_methods.SubmissionInProgress
+        self.review_stepstate_id =self.json_methods
+        self.user_id = self.sip_json['UserId']
+        self.sami_call_number = self.sip_json['SamiCallNumber']
+        self.status = self.sip_json['Status']
 
 
     
