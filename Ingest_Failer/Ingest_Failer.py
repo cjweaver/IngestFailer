@@ -14,51 +14,6 @@ import api_requests
 from json_methods import json_methods
 
 
-
-
-# Is the SIP stuck or has it actually failed with callback error message?
-
-
-
-
-# class Gui(object):
-    
-#     def enter_SIP_ID(self):
-#         pass
-
-#     def enter_failure_msg(self):
-#         pass
-
-
-# class ApiRequests(object):
-
-#     def __init__(self, sip_tool_addr):
-#         self.sip_tool_addr = sip_tool_addr 
-    
-#     def GetJSON(self, SIP_ID):
-        
-#         pass
-
-#     def PostCallBack(self):
-#         pass
-
-#     def SucessTest(self):
-#         pass
-
-
-# class sipJSON(object):
-
-#     def __init__(self, pSIP_JSON):
-# 		self.CallbackUri = pSIP_JSON['Submissions'][0]['CallbackUri']
-# 		self.SamiCallNumber = pSIP_JSON['SamiCallNumber']
-	
-#      def get_submission_node(self):
-#          pass
-
-#      def get_first_submission_node(self):
-#          pass
-
-
 class SIP(object):
 
     def __init__(self, SIP_ID):
@@ -70,15 +25,3 @@ class SIP(object):
         self.user_id = self.sip_json['UserId']
         self.sami_call_number = self.sip_json['SamiCallNumber']
         self.status = self.sip_json['Status']
-
-
-    
-
-class User_details(object):
-
-    # get user details
-    pass
-
-# my_SIP = SIP(486476)
-# print(my_SIP.SubmissionInProgress)
-# print()

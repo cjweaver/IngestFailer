@@ -1,11 +1,15 @@
-from tkinter import Tk, Button, Frame, Entry, LEFT, RIGHT, Toplevel, Text, Scrollbar
+import api_requests
 import tkinter.messagebox as box
 import tkinter.ttk as ttk
-
-import api_requests
-from Ingest_Failer import SIP
-# from api_requests import ApiRequests
+import win32api
+import win32net
 from json_methods import json_methods
+from Ingest_Failer import SIP
+from tkinter import Tk, Button, Frame, Entry, LEFT, RIGHT, Toplevel, Text, Scrollbar
+
+
+
+
 
 class Gui(object):
 
@@ -22,7 +26,7 @@ class Gui(object):
         if self.sip.SubmissionInProgress: 
             confirm = box.askyesno(f'The SIP is appears stuck', 'Force timeout failure?')
             if confirm:
-                if api_requests.post_callback(self.sip.json_methods.get_CallBackURI(), self.sip.json_methods.get_ExternalID(), "Forced timeout by CWEAVER"):
+                if api_requests.post_callback(self.sip.json_methods.get_CallBackURI(), self.sip.json_methods.get_ExternalID(), f"Forced timeout by {full_name}"):
                     box.showinfo('Unlocked', f'{self.sip.title} is now able to be edited')
                 else:
                     box.showerror('Error', 'Unable to force time out failure')
@@ -110,17 +114,10 @@ class TopErrorWindow(Toplevel):
             self.details_expanded = True
 
 
-
-
-
-# def enter_failure_msg(self):
-#     pass
-
+# https://superuser.com/questions/1239773/full-name-of-windows-user-name-in-domain-using-python
+user_info = win32net.NetUserGetInfo(win32net.NetGetAnyDCName(), win32api.GetUserName(), 2)
+full_name = user_info["full_name"]
 
 prog_gui = Gui()
 prog_gui.enter_SIP_ID()
-# my_sip = enter_SIP_ID()
-# print(my_sip)
-# # valid_sip = prog_gui.set_sip_id()
-
 prog_gui.window.mainloop()

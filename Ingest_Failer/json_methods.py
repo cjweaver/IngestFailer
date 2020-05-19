@@ -38,19 +38,3 @@ class json_methods(object):
             if step['StepTitle'] == "Review":
                 self.review_stepstate_id = step["StepStateId"]
                 return self.review_stepstate_id
-
-
-            
-
-
-
-
-# with open('C1274-70_C1274-72.json') as f:
-#     my_json = sipJSON(json.load(f))
-#     print(my_json.sami_call_number)
-#     print(my_json.get_CallBackURI())
-#     # print(my_json.get_stuck_submission())
-#     print(my_json.get_ExternalID())
-
-# # SIP.Submission[first listed (should be the most recent)].CallbackRawResult == null
-# # SubmissionInProgress
