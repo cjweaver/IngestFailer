@@ -136,3 +136,24 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Local History for Visual Studio Code
+.history/
+
+# Rough Tkinter tests
+simple_entry.py
+validate.py
+
+# Test JSON files
+C102.json
+C1274-70_C1274-72.json
+
+
