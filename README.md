@@ -21,11 +21,14 @@ Simply enter the SIP ID, press return and the status of the SIP will be shown.
 _The SIP has been completed and successfully submitted to the Digital Library System (DLS)_
 ![Successfully Ingested into the Digital Library System](https://lh3.googleusercontent.com/pw/ACtC-3eM1k4EqLVmow5be4_I0oOXtwdoCxFV8fvyZS9nwBbWShq84AxioeA8_GJn4Jplo0577et4kUVGaG33JHNq2QCSJlHn-Qc2bxuiKe9eMH4Tq1iK5Q9WVzyZW-aLJ8xLB3zJK3f2AOqkYfFX4ivHQ4RCjg=w289-h147-no)
 
+
 _The SIP has not been completed and is still available to edit in the AVSIP Tool_
 ![Not yet completed](https://lh3.googleusercontent.com/pw/ACtC-3fNsczBqRFvA0cyog0MdEaLcGwHW0KMUYkLSpVjrrKn4vSTGss7gh4SYSu34ZEr1xQJ2adOskv-IbLIEL9vMNjdqf2H8PUVZapxCs0ldXXsN0nOZU0j6a-xs_pzjo2Xk1MD8uLEuhs9Tgc_rLX3fAh2FA=w289-h147-no)
 
+
 _The SIP has failed ingest and can be corrected in the AVSIP Tool. The "Details" button gives the last Submission Error Message received._  
-![enter image description here](https://lh3.googleusercontent.com/pw/ACtC-3fOQH8IVKQWPUzj6KmwKPCJFcwlRHXOhUM8mMhGvxJZBGU0YrnbvTRt6oOr7HAhPEAQG7PPVM4Gr5yRfpWgqbMKVqOHWeCfnPmTwHraE2xB1Cik-4MCIPnWrVTdV0oP--klI7qeaopvjReKrX0AGt29fg=w382-h192-no)
+![Failed Ingest](https://lh3.googleusercontent.com/pw/ACtC-3fOQH8IVKQWPUzj6KmwKPCJFcwlRHXOhUM8mMhGvxJZBGU0YrnbvTRt6oOr7HAhPEAQG7PPVM4Gr5yRfpWgqbMKVqOHWeCfnPmTwHraE2xB1Cik-4MCIPnWrVTdV0oP--klI7qeaopvjReKrX0AGt29fg=w382-h192-no)
+
 
 _The SIP has been completed but is still 'stuck' in a state of submission_
 ![The SIP appears stuck ](https://lh3.googleusercontent.com/pw/ACtC-3doThV0bLNRxOl9y0Qaz4C4vtjkhoYYj8rUE0dFhdbZlOeF-O9Si7thpoxrw6ftnXAUzVIwhUwRBBAH8MG942dgk-Sy6c5brr1_EtsMsbqag9RB9yBmAainC9tIa3F_IzolZRALoHT0Loi7KSThxAbYtg=w206-h147-no)
