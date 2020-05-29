@@ -1,8 +1,20 @@
-import json
+# import json
 
-class json_methods(object):
-    
+
+class JsonMethods():
+    """Extracts various details from the pSIPs JSON"
+
+    The majority of the methods in this class act upon the first result
+    in the 'Submissions' list that has a callbackRawResult of False
+    """
+
     def __init__(self, pSIP_JSON):
+        """
+        Parameters
+        ----------
+        pSIP_JSON: dict
+            The JSON representing the pSIP
+        """
         self.submissions = pSIP_JSON['Submissions']
         self.StepStates = pSIP_JSON['StepStates']
         self.SubmissionInProgress = pSIP_JSON['SubmissionInProgress']
@@ -11,7 +23,7 @@ class json_methods(object):
                 self.stuck_submission = node
             else:
                 self.stuck_submission = self.submissions[0]
-	
+
     def get_submissions_node(self):
         return self.submissions
 

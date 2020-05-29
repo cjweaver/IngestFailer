@@ -1,38 +1,50 @@
-import api_requests
+# Ingest Failer
+# Simulates a submission call back failure from the DLS for stuck SIPs
+#
+# The SIP Tool submits SIPs to be ingested by the AVRC ingest stream.
+# Once a SIP has been processed, and submission has either succeeded
+# or failed, a callback with that result is sent to the SIP Tool.
+# In the vast majority of cases, the AVRC ingest stream and
+# the SIP Tool communicate reliably. When it does not,
+# the SIP will need to be force-failed using the AVSIP API.
+#
+# christopher.weaver@bl.uk 21/04/2020
+
 import tkinter.messagebox as box
 import tkinter.ttk as ttk
+from tkinter import (LEFT, RIGHT, Button, Entry, Frame, Scrollbar, Text, Tk,
+                     Toplevel)
+
 import pywintypes
 import win32api
 import win32net
-from json_methods import json_methods
-from SIP import SIP
-from tkinter import Tk, Button, Frame, Entry, LEFT, RIGHT, Toplevel, Text, Scrollbar
+
+import api_requests
+from sip import Sip
 
 
-
-
-
-class Gui(object):
+class Gui():
+    """Class for the GUI"""
 
     def __init__(self):
         self.window = Tk()
         self.window.title('Ingest Failer')
         self.window.geometry("250x30")
-        self.enter_SIP_ID()
+        self.enter_sip_id()
 
     @staticmethod
     def is_num(value):
         return value.isdigit() or value == ''
 
     def confirm_stuck(self):
-        if self.sip.SubmissionInProgress: 
+        if self.sip.SubmissionInProgress:
             confirm = box.askyesno(f'The SIP is appears stuck', 'Force timeout failure?')
             if confirm:
                 if api_requests.post_callback(self.sip.json_methods.get_CallBackURI(), self.sip.json_methods.get_ExternalID(), f"Forced timeout by {full_name}"):
                     box.showinfo('Unlocked', f'{self.sip.title} is now able to be edited')
                 else:
                     box.showerror('Error', 'Unable to force time out failure')
-        
+
         if self.sip.status == 'Failed ingest':
             # box.showerror('Error', f'This pSIP failed ingest\n\n{self.sip.json_methods.get_CallBackMessage()}')
             title = 'Error'
@@ -44,7 +56,7 @@ class Gui(object):
         elif self.sip.status == 'Ingested':
             box.showinfo('Ingested', 'This SIP has been sucessfully ingested')
 
-    def valid_SIP_ID(self, event=None):
+    def valid_sip_id(self, event): 
         self.response = api_requests.get_JSON(self.entry.get())
         if self.response is None:
             box.showerror('Error', 'That is not a valid SIP ID')
@@ -53,20 +65,20 @@ class Gui(object):
         else:
             confirm = box.askyesno(f'Confirm SIP ID {self.entry.get()}', f'{self.response["Title"]}')
             if confirm:
-                self.sip = SIP(self.entry.get())
+                self.sip = Sip(self.entry.get())
                 self.sip.title = self.response["Title"]
                 self.confirm_stuck()
         self.entry.delete(0, 'end')
 
-    def enter_SIP_ID(self):
+    def enter_sip_id(self):
         self.frame = Frame(self.window)
         self.frame.pack(side=LEFT, padx=5)
         num_check = self.frame.register(self.is_num)
         self.entry = Entry(self.frame, validate='key', validatecommand=(num_check, '%P'))
         self.entry.pack(side=LEFT)
-        btn = Button(self.frame, text='Enter SIP ID', command=self.valid_SIP_ID)
+        btn = Button(self.frame, text='Enter SIP ID', command=self.valid_sip_id)
         btn.pack(side=RIGHT, padx=5)
-        self.entry.bind("<Return>", self.valid_SIP_ID)
+        self.entry.bind("<Return>", self.valid_sip_id)
         self.entry.focus()
 
 # This is a great Message box with an expandable details section taken from:
@@ -122,5 +134,4 @@ full_name = user_info["full_name"]
 
 if __name__ == "__main__":
     prog_gui = Gui()
-    # prog_gui.enter_SIP_ID()
     prog_gui.window.mainloop()
