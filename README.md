@@ -5,6 +5,8 @@ Small GUI utility to force a callback timeout for the British Library's AVSIP To
 
    ![enter image description here](https://lh3.googleusercontent.com/pw/ACtC-3fa115xjd522lJkEmfIEXACIcxhCWgdRch14C75HxxP6lWkgB9U7qo97sJPwJmVtEqxmnvzBnEw6ACcW3pnYVS9tSEfIJCuUOxYq_W8PX43rti2PyxbZ3qQhlAiTEWr2r2BkbDqpdn9ItqlL34CovnS0A=w357-h256-no)
 
+The SIP Tool submits SIPs to be ingested by the AVRC ingest stream. Once a SIP has been processed, and submission has either succeeded or failed, a callback with that result is sent to the SIP Tool. In the vast majority of cases, the AVRC ingest stream and the SIP Tool communicate reliably. When it does not, the SIP will need to be force-failed using the AVSIP API.
+
 ## Installation
 
 Windows:
