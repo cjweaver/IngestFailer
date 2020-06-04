@@ -41,18 +41,11 @@ _The SIP has been completed but is still 'stuck' in a state of submission_
 _N.B - Ingest Failer doesn't check how long a SIP has been stuck for, it simply assumes if you're using the tool there is an issue with the SIP_
 
 ![enter image description here ](https://lh3.googleusercontent.com/pw/ACtC-3dg3-ESGcxYY56aXhLPEyM5i_kfBZKEF33OBQQfF9AS4Q59psBmQCycD65OUns1HonDoKXbcYmsu3mCMynfeUGMu1ivnRqoxm6H9cSYpmvkh5PqBDZuTTP6zGvyTwkROF0kLb5vBO93i40nbDW7-Mx68w=w270-h117-no)
-## Development setup
 
-Describe how to install all development dependencies and how to run an automated test-suite of some kind. Potentially do this for multiple platforms.
-
-```sh
-make install
-npm test
-```
 
 ## Release History
 
-* 0.0.1
+* 1.0.0
     * First Release.
 
 ## Meta
