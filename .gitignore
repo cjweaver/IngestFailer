@@ -159,4 +159,7 @@ validate.py
 C102.json
 C1274-70_C1274-72.json
 
+# Project venv
+.ingest_test
+
 

@@ -9,7 +9,6 @@
 # the SIP will need to be force-failed using the AVSIP API.
 #
 # christopher.weaver@bl.uk 21/04/2020
-
 import tkinter.messagebox as box
 import tkinter.ttk as ttk
 from tkinter import (LEFT, RIGHT, Button, Entry, Frame, Scrollbar, Text, Tk,
@@ -19,8 +18,8 @@ import pywintypes
 import win32api
 import win32net
 
-import api_requests
-from sip import Sip
+from ingestfailer import api_requests
+from ingestfailer.sip import Sip
 
 
 class Gui():
@@ -132,6 +131,9 @@ class TopErrorWindow(Toplevel):
 user_info = win32net.NetUserGetInfo(win32net.NetGetAnyDCName(), win32api.GetUserName(), 2)
 full_name = user_info["full_name"]
 
-if __name__ == "__main__":
+def main():
     prog_gui = Gui()
     prog_gui.window.mainloop()
+
+if __name__ == "__main__":
+    main()

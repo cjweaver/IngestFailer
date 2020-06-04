@@ -1,6 +1,3 @@
-# import json
-
-
 class JsonMethods():
     """Extracts various details from the pSIPs JSON"
 

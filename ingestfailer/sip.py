@@ -1,5 +1,5 @@
-import api_requests
-from json_methods import JsonMethods
+import ingestfailer.api_requests
+from ingestfailer.json_methods import JsonMethods
 
 
 class Sip():
@@ -11,6 +11,12 @@ class Sip():
     """
 
     def __init__(self, SIP_ID):
+        """
+        Parameters
+        ----------
+        SIP_ID: str
+            The pSIP ID number
+        """
         self.sip_id = SIP_ID
         self.sip_json = api_requests.get_JSON(self.sip_id)
         self.json_methods = JsonMethods(self.sip_json)
